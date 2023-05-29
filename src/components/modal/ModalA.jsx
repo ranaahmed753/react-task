@@ -10,7 +10,9 @@ const ModalA = ({ isModalAOpen, closeModalA, contacts }) => {
     backgroundColor: '#FFF',
     padding: '50px',
     zIndex: 1000,
-    borderRadius: 20
+    borderRadius: 20,
+    overflow: scrollY,
+    cursor: 'pointer'
   }
   const OVERLAY_STYLES = {
     position: 'fixed',
@@ -20,7 +22,6 @@ const ModalA = ({ isModalAOpen, closeModalA, contacts }) => {
     bottom: 0,
     backgroundColor: 'rgba(0,0,0,0.2)',
     zIndex: 1000,
-    cursor: 'pointer',
 
   }
 

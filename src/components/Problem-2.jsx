@@ -7,18 +7,30 @@ const Problem2 = () => {
     const [isModalBOpen, setIsModalBOpen] = useState(false);
     const [isOnlyEvenChecked, setIsOnlyEvenChecked] = useState(false);
     const [contacts, setContacts] = useState([])
+    const [countryContacts, setCountryContacts] = useState([])
 
     useEffect(() => {
+        fetchContacts()
+        fetchContactsByCountryName()
+    }, [])
+
+    const fetchContacts = () => {
         fetch('https://contact.mediusware.com/api/contacts/')
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.results)
                 setContacts(data.results)
             })
+    }
 
-        // const data = response.json()
-        // setContacts(data);
-    }, [])
+    const fetchContactsByCountryName = () => {
+        fetch('https://contact.mediusware.com/api/country-contacts/united%20states/?fbclid=IwAR2UB8EOMu09OEYUNzfkpEJ2KEeTEsdVTTtpoHnoeyLcN8_pvyyBNaosZAc')
+            .then((response) => response.json())
+            .then((data) => {
+                setCountryContacts(data.results)
+            })
+
+    }
     const openModalA = () => {
         setIsModalAOpen(true)
     }
@@ -45,7 +57,7 @@ const Problem2 = () => {
                     <button className="btn btn-lg btn-outline-warning" type="button" onClick={openModalB}>US Contacts</button>
                 </div>
                 <ModalA isModalAOpen={isModalAOpen} closeModalA={closeModalA} contacts={contacts} />
-                <ModalB isModalBOpen={isModalBOpen} closeModalB={closeModalB} />
+                <ModalB isModalBOpen={isModalBOpen} closeModalB={closeModalB} countryContacts={countryContacts} />
             </div>
         </div>
     );

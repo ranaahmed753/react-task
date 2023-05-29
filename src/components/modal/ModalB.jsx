@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ModalB = ({ isModalBOpen, closeModalB }) => {
+const ModalB = ({ isModalBOpen, closeModalB, countryContacts }) => {
   const MODAL_STYLES = {
     position: 'fixed',
     top: '50%',
@@ -29,6 +29,14 @@ const ModalB = ({ isModalBOpen, closeModalB }) => {
       <div style={MODAL_STYLES}>
         <h3>Modal B</h3>
         <button onClick={closeModalB}>Close</button>
+        {
+          countryContacts.map(contact => (
+            <div>
+              <h3>{contact.phone}</h3>
+              <h3>{contact.country.name}</h3>
+            </div>
+          ))
+        }
       </div>
     </div>
 
