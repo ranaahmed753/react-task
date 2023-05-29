@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Problem1 = () => {
 
@@ -7,6 +7,7 @@ const Problem1 = () => {
     const [name, setName] = useState('');
     const [status, setStatus] = useState('active');
     const [filter, setFilter] = useState('all');
+
 
     const handleClick = (val) => {
         setShow(val);

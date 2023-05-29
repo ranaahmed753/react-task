@@ -1,9 +1,7 @@
 /* eslint-disable no-undef */
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React from 'react'
 
-const ModalA = ({ isModalAOpen, closeModalA }) => {
-  const [contacts, setContacts] = useState([])
+const ModalA = ({ isModalAOpen, closeModalA, contacts }) => {
   const MODAL_STYLES = {
     position: 'fixed',
     top: '50%',
@@ -25,22 +23,16 @@ const ModalA = ({ isModalAOpen, closeModalA }) => {
     cursor: 'pointer',
 
   }
-  // eslint-disable-next-line no-undef
-  useEffect(() => {
-    const response = fetch('https://contact.mediusware.com/api/contacts/');
-    // const data = response.json()
-    //setContacts(data.results);
-  }, [])
 
   return isModalAOpen ? (
     <div style={OVERLAY_STYLES}>
       <div style={MODAL_STYLES}>
         <h3>Modal A</h3>
         <button onClick={closeModalA}>Close</button>
-        {contacts && contacts.map(contact => (
-          <div key={result.id}>
+        {contacts.map(contact => (
+          <div key={contact.id}>
             <h4>{contact.phone}</h4>
-            <h4>{contact.country}</h4>
+            <h4>{contact.country.name}</h4>
           </div>
         ))}
       </div>
