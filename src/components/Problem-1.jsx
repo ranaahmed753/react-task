@@ -10,6 +10,7 @@ const Problem1 = () => {
 
     const handleClick = (val) => {
         setShow(val);
+        setFilter(val)
     };
 
     const handleSubmit = (e) => {
@@ -23,9 +24,9 @@ const Problem1 = () => {
         setStatus('active');
     };
 
-    const handleFilterChange = (e) => {
-        setFilter(e.target.value);
-    };
+    // const handleFilterChange = (e) => {
+    //     setFilter(e.target.value);
+    // };
 
     const filteredTasks = tasks.filter((task) => {
         if (filter === 'active') {
@@ -35,6 +36,7 @@ const Problem1 = () => {
         }
         return true;
     });
+
 
     const sortedTasks = filteredTasks.sort((a, b) => {
         if (a.status === 'active' && b.status !== 'active') {
